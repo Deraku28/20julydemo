@@ -4,6 +4,10 @@ import './globals.css';
 import { PerformanceMonitor } from '@/components/PerformanceMonitor';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ErrorHandlerInitializer } from '@/components/ErrorHandlerInitializer';
+import { AnalyticsProvider } from '@/providers/AnalyticsProvider';
+import { PrivacyConsent } from '@/components/PrivacyConsent';
+import { ThemeProvider } from '@/contexts/ThemeContext';
+import { Footer } from '@/components/Footer';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -37,9 +41,15 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <body className={`${inter.className} antialiased`}>
         <ErrorBoundary>
-          {children}
-          <PerformanceMonitor />
-          <ErrorHandlerInitializer />
+          <ThemeProvider>
+            <AnalyticsProvider>
+              {children}
+              <Footer />
+              <PerformanceMonitor />
+              <ErrorHandlerInitializer />
+              <PrivacyConsent />
+            </AnalyticsProvider>
+          </ThemeProvider>
         </ErrorBoundary>
       </body>
     </html>

@@ -45,7 +45,7 @@ describe('Performance', () => {
     cy.window().then((win) => {
       const resources = win.performance.getEntriesByType('resource');
       const totalSize = resources.reduce((sum, resource) => {
-        return sum + (resource.transferSize || 0);
+        return sum + ((resource as PerformanceResourceTiming).transferSize || 0);
       }, 0);
 
       // Total transfer size should be less than 500KB

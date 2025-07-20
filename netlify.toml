@@ -1,0 +1,62 @@
+[build]
+  command = "npm run build"
+  publish = "out"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
+
+[context.production.environment]
+  NODE_ENV = "production"
+  NEXT_PUBLIC_SUPABASE_URL = "your_production_supabase_url"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY = "your_production_supabase_anon_key"
+  NEXT_PUBLIC_SITE_URL = "https://your-domain.com"
+  NEXT_PUBLIC_GA_ID = "your_google_analytics_id"
+
+[context.deploy-preview.environment]
+  NODE_ENV = "preview"
+  NEXT_PUBLIC_SUPABASE_URL = "your_preview_supabase_url"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY = "your_preview_supabase_anon_key"
+  NEXT_PUBLIC_SITE_URL = "https://preview.your-domain.com"
+
+[context.branch-deploy.environment]
+  NODE_ENV = "development"
+  NEXT_PUBLIC_SUPABASE_URL = "your_development_supabase_url"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY = "your_development_supabase_anon_key"
+  NEXT_PUBLIC_SITE_URL = "http://localhost:3000" 

@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server';
 
+// Force static export for this API route
+export const dynamic = 'force-static';
+
 export async function GET() {
   try {
     // Basic health check - you can add more sophisticated checks here

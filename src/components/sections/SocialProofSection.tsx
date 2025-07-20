@@ -13,7 +13,7 @@ export function SocialProofSection({ submissionCount, className = '' }: SocialPr
   const { displayCount, isLoading, error, lastUpdate, refresh } = useCounter();
 
   return (
-    <section className={`bg-gray-50 py-6 lg:py-8 ${className}`}>
+    <section className={`bg-gray-50 dark:bg-gray-800 py-6 lg:py-8 ${className}`}>
       <div className="responsive-container">
         <div className="text-center space-y-5">
           {/* Main Social Proof */}
@@ -21,7 +21,7 @@ export function SocialProofSection({ submissionCount, className = '' }: SocialPr
             <h2 className="heading-2">
               Join the Community
             </h2>
-            <p className="body-large max-w-2xl mx-auto">
+            <p className="body-large max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
               Hundreds of developers are already preparing to master rapid MVP development
             </p>
           </div>
@@ -49,10 +49,10 @@ export function SocialProofSection({ submissionCount, className = '' }: SocialPr
                 </button>
               )}
             </div>
-            <p className="body-medium">
+            <p className="body-medium text-gray-600 dark:text-gray-300">
               developers already on the waitlist
             </p>
-            <span className="caption">
+            <span className="caption text-gray-500 dark:text-gray-400">
               Last updated: {lastUpdate.toLocaleTimeString()}
             </span>
           </div>
@@ -68,7 +68,7 @@ export function SocialProofSection({ submissionCount, className = '' }: SocialPr
               <h3 className="heading-3 mb-2">
                 Proven Methodology
               </h3>
-              <p className="body-small">
+              <p className="body-small text-gray-600 dark:text-gray-300">
                 Tested framework used by successful founders
               </p>
             </div>
@@ -82,7 +82,7 @@ export function SocialProofSection({ submissionCount, className = '' }: SocialPr
               <h3 className="heading-3 mb-2">
                 Real Results
               </h3>
-              <p className="body-small">
+              <p className="body-small text-gray-600 dark:text-gray-300">
                 Students launch MVPs in 30 days or less
               </p>
             </div>
@@ -96,7 +96,7 @@ export function SocialProofSection({ submissionCount, className = '' }: SocialPr
               <h3 className="heading-3 mb-2">
                 Community Support
               </h3>
-              <p className="body-small">
+              <p className="body-small text-gray-600 dark:text-gray-300">
                 Join a network of like-minded developers
               </p>
             </div>
@@ -140,9 +140,9 @@ export function SocialProofSection({ submissionCount, className = '' }: SocialPr
               Why Choose Vibe Coding?
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-              <div className="bg-white rounded-lg p-6 shadow-soft">
-                <h4 className="font-semibold text-gray-900 mb-3">Proven Framework</h4>
-                <ul className="space-y-2 text-sm text-gray-600">
+              <div className="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-soft">
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Proven Framework</h4>
+                <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
                   <li>• 30-day timeline from idea to launch</li>
                   <li>• Market validation before full development</li>
                   <li>• Tested methodology used by successful founders</li>
@@ -150,9 +150,9 @@ export function SocialProofSection({ submissionCount, className = '' }: SocialPr
                 </ul>
               </div>
               
-              <div className="bg-white rounded-lg p-6 shadow-soft">
-                <h4 className="font-semibold text-gray-900 mb-3">Community & Support</h4>
-                <ul className="space-y-2 text-sm text-gray-600">
+              <div className="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-soft">
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Community & Support</h4>
+                <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
                   <li>• Join a network of like-minded developers</li>
                   <li>• Real-time support and feedback</li>
                   <li>• Peer learning and collaboration</li>

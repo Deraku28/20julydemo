@@ -66,11 +66,11 @@ export function HeroSection({ submissionCount }: HeroSectionProps) {
                 )}
               </div>
               
-              <span className="text-gray-600 font-medium">
+              <span className="text-gray-600 dark:text-gray-300 font-medium">
                 developers already on the waitlist
               </span>
               
-              <span className="text-xs text-gray-400">
+              <span className="text-xs text-gray-400 dark:text-gray-500">
                 • Updated {lastUpdate.toLocaleTimeString()}
               </span>
             </div>
@@ -84,8 +84,8 @@ export function HeroSection({ submissionCount }: HeroSectionProps) {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900">30-Day Timeline</h3>
-                  <p className="text-sm text-gray-600">From idea to launch in one month</p>
+                  <h3 className="font-semibold text-gray-900 dark:text-white">30-Day Timeline</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">From idea to launch in one month</p>
                 </div>
               </div>
               
@@ -96,8 +96,8 @@ export function HeroSection({ submissionCount }: HeroSectionProps) {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900">Market Validation</h3>
-                  <p className="text-sm text-gray-600">Test ideas before full development</p>
+                  <h3 className="font-semibold text-gray-900 dark:text-white">Market Validation</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">Test ideas before full development</p>
                 </div>
               </div>
               
@@ -108,8 +108,8 @@ export function HeroSection({ submissionCount }: HeroSectionProps) {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900">Launch Ready</h3>
-                  <p className="text-sm text-gray-600">Deploy with confidence</p>
+                  <h3 className="font-semibold text-gray-900 dark:text-white">Launch Ready</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">Deploy with confidence</p>
                 </div>
               </div>
             </div>
@@ -117,12 +117,12 @@ export function HeroSection({ submissionCount }: HeroSectionProps) {
           
           {/* Right Side - Form (40% on desktop) */}
           <div className="lg:col-span-2">
-            <div className="card shadow-large p-8">
+            <div className="card shadow-large p-8 bg-white dark:bg-gray-800">
               <div className="text-center mb-6">
-                <h2 className="heading-3 mb-2">
+                <h2 className="heading-3 mb-2 text-gray-900 dark:text-white">
                   Join the Waitlist
                 </h2>
-                <p className="body-small">
+                <p className="body-small text-gray-600 dark:text-gray-300">
                   Be the first to know when we launch
                 </p>
               </div>

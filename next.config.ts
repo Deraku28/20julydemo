@@ -1,6 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Enable static export for Netlify
+  output: 'export',
+  
+  // Production optimizations
+  compress: true,
+  poweredByHeader: false,
+  generateEtags: false,
+  
   // Enable experimental features for better performance
   experimental: {
     optimizeCss: true,
@@ -13,12 +21,14 @@ const nextConfig: NextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60,
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   
-  // Compression
-  compress: true,
+  // Note: Headers, redirects, and rewrites are handled by Netlify configuration
+  // for static export deployments
   
-  // Bundle analyzer (development only)
+  // Bundle analyzer (only in development)
   ...(process.env.ANALYZE === 'true' && {
     webpack: (config) => {
       config.plugins.push(
@@ -29,49 +39,6 @@ const nextConfig: NextConfig = {
       return config;
     },
   }),
-  
-  // Headers for performance
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block',
-          },
-        ],
-      },
-      {
-        source: '/api/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=3600, stale-while-revalidate=86400',
-          },
-        ],
-      },
-    ];
-  },
-  
-  // Redirects for SEO and performance
-  async redirects() {
-    return [
-      {
-        source: '/home',
-        destination: '/',
-        permanent: true,
-      },
-    ];
-  },
 };
 
 export default nextConfig;

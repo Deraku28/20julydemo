@@ -19,7 +19,7 @@ export function Testimonial({
   className = ''
 }: TestimonialProps) {
   return (
-    <div className={classNames('card p-6', className)}>
+    <div className={classNames('card p-6 bg-white dark:bg-gray-700', className)}>
       <div className="flex items-start space-x-4">
         {avatar && (
           <img
@@ -29,13 +29,13 @@ export function Testimonial({
           />
         )}
         <div className="flex-1">
-          <blockquote className="body-medium italic mb-4 text-gray-700">
+          <blockquote className="body-medium italic mb-4 text-gray-700 dark:text-gray-200">
             "{quote}"
           </blockquote>
           <div className="flex items-center justify-between">
             <div>
-              <p className="font-semibold text-gray-900">{author}</p>
-              <p className="caption">
+              <p className="font-semibold text-gray-900 dark:text-white">{author}</p>
+              <p className="caption text-gray-600 dark:text-gray-300">
                 {role}
                 {company && ` at ${company}`}
               </p>

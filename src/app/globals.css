@@ -221,13 +221,65 @@
   }
 }
 
-/* Dark mode support (future enhancement) */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    /* Dark mode color overrides would go here */
-  }
+/* Dark mode styles */
+.dark {
+  --background: #111827;
+  --foreground: #f9fafb;
+}
+
+.dark body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Dark mode component overrides */
+.dark .card {
+  @apply bg-gray-800 border-gray-700;
+}
+
+.dark .form-input {
+  @apply bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400;
+}
+
+.dark .form-input:focus {
+  @apply border-primary-400 ring-primary-400;
+}
+
+.dark .btn-outline {
+  @apply border-gray-600 text-gray-300 hover:bg-gray-700;
+}
+
+.dark .gradient-hero {
+  background: linear-gradient(135deg, theme('colors.gray.800') 0%, theme('colors.gray.900') 100%);
+}
+
+.dark .heading-1,
+.dark .heading-2,
+.dark .heading-3 {
+  @apply text-white;
+}
+
+.dark .body-large,
+.dark .body-medium,
+.dark .body-small {
+  @apply text-gray-300;
+}
+
+.dark .caption {
+  @apply text-gray-400;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: theme('colors.gray.800');
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: theme('colors.gray.600');
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.gray.500');
 }
 
 /* Print styles */

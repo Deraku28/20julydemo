@@ -1,52 +1,32 @@
 import { useCallback } from 'react';
-
-// Extend Window interface for gtag
-declare global {
-  interface Window {
-    gtag?: (...args: any[]) => void;
-  }
-}
+import { trackFormEvent, trackConversion } from '@/lib/analytics';
+import { conversionTracker } from '@/utils/conversion-tracking';
 
 export function useFormAnalytics() {
   const trackFormStart = useCallback(() => {
     // Track when user starts filling the form
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'form_start', {
-        event_category: 'engagement',
-        event_label: 'interest_form'
-      });
-    }
+    trackFormEvent('interest_form', 'start');
   }, []);
   
   const trackFormSubmit = useCallback((success: boolean) => {
     // Track form submission
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'form_submit', {
-        event_category: 'conversion',
-        event_label: 'interest_form',
-        value: success ? 1 : 0
-      });
+    if (success) {
+      trackFormEvent('interest_form', 'complete');
+      trackConversion(1);
+      conversionTracker.trackFormConversion('interest_form', 1);
+    } else {
+      trackFormEvent('interest_form', 'error');
     }
   }, []);
   
   const trackFieldFocus = useCallback((fieldName: string) => {
     // Track field focus for engagement analytics
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'form_field_focus', {
-        event_category: 'engagement',
-        event_label: fieldName
-      });
-    }
+    trackFormEvent('interest_form', 'start', fieldName);
   }, []);
   
   const trackFormError = useCallback((errorType: string) => {
     // Track form errors for debugging
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'form_error', {
-        event_category: 'error',
-        event_label: errorType
-      });
-    }
+    trackFormEvent('interest_form', 'error', errorType);
   }, []);
   
   return {

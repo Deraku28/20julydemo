@@ -1,0 +1,23 @@
+# Custom domain configuration
+[[domains]]
+  domain = "your-domain.com"
+  force_ssl = true
+  redirects = [
+    "www.your-domain.com/* https://your-domain.com/:splat 301!"
+  ]
+
+[[domains]]
+  domain = "www.your-domain.com"
+  force_ssl = true
+  redirects = [
+    "/* https://your-domain.com/:splat 301!"
+  ]
+
+# SSL/TLS configuration
+[ssl]
+  provider = "netlify"
+  force_ssl = true
+  http2 = true
+  hsts = true
+  hsts_include_subdomains = true
+  hsts_preload = true 

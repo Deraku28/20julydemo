@@ -6,6 +6,9 @@ import { SocialProofSection } from '@/components/sections/SocialProofSection';
 import { CounterProvider } from '@/contexts/CounterContext';
 import { getOptimizedSubmissionCount } from '@/lib/database-optimization';
 import { usePerformanceOptimization } from '@/utils/performance';
+import { AnalyticsDashboard } from '@/components/AnalyticsDashboard';
+import { useScrollTracking } from '@/hooks/useScrollTracking';
+import { Footer } from '@/components/Footer';
 import React from 'react';
 
 // Loading component for the counter
@@ -59,11 +62,17 @@ export default function HomePage() {
   // Initialize performance monitoring
   usePerformanceOptimization();
   
+  // Initialize scroll tracking
+  useScrollTracking();
+  
   return (
-    <main>
-      <Suspense fallback={<CounterLoader />}>
-        <PageWithData />
-      </Suspense>
-    </main>
+    <>
+      <main>
+        <Suspense fallback={<CounterLoader />}>
+          <PageWithData />
+        </Suspense>
+        <AnalyticsDashboard />
+      </main>
+    </>
   );
 }
